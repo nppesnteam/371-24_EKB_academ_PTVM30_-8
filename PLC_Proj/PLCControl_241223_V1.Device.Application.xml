@@ -1,0 +1,2089 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Symbolconfiguration xmlns="http://www.3s-software.com/schemas/Symbolconfiguration.xsd">
+  <Header>
+    <Version>3.5.14.0</Version>
+    <SymbolConfigObject version="4.0.0.0" runtimeid="3.5.17.30" libversion="3.5.17.0" compiler="3.5.17.30" lmm="3.5.17.0" profile="CODESYS V3.5 SP17 Patch 3+" settings="SupportOPCUA, IncludeComments, IncludeAttributes, IncludeTypeNodeAttributes, XmlIncludeNodeFlags, XmlIncludeComments, XmlIncludeAttributes, XmlIncludeTypeNodeAttributes, SymbolAttributeFilterType.All, SymbolCommentFilterType.PreferDocuComments, LayoutCalculator=OptimizedClientSideLayoutCalculator" />
+    <ProjectInfo name="PLCControl_241223_V1" devicename="Device" appname="Application" />
+  </Header>
+  <TypeList>
+    <TypeSimple name="T_BOOL" size="1" swapsize="0" typeclass="Bool" iecname="BOOL" />
+    <TypeSimple name="T_DINT" size="4" swapsize="4" typeclass="DInt" iecname="DINT" />
+    <TypeSimple name="T_INT" size="2" swapsize="2" typeclass="Int" iecname="INT" />
+    <TypeSimple name="T_REAL" size="4" swapsize="4" typeclass="Real" iecname="REAL" />
+    <TypeSimple name="T_WSTRING" size="162" swapsize="2" typeclass="WString" iecname="WSTRING" />
+    <TypeSimple name="T_WSTRING_22_" size="46" swapsize="2" typeclass="WString" iecname="WSTRING(22)" />
+    <TypeSimple name="T_WSTRING_30_" size="62" swapsize="2" typeclass="WString" iecname="WSTRING(30)" />
+    <TypeSimple name="T_WSTRING_50_" size="102" swapsize="2" typeclass="WString" iecname="WSTRING(50)" />
+    <TypeUserDef name="T_St_Params_Pid_Imp" size="46" nativesize="48" typeclass="Userdef" pouclass="STRUCTURE" iecname="St_Params_Pid_Imp">
+      <UserDefElement iecname="fDead" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>зона нечувствительности</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fKp" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>коэффициент усиления</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDifErr" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Дифференцирование ошибки или параметра 0-параметр 1-ошибка</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTd" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>коэффициент дифференцирования</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTm" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>время хода</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTmin" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite">
+        <Comment>Минимальный импульс</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTi" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite">
+        <Comment>коэффициент интегрирования</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTfilIn" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite">
+        <Comment>фильтр для I</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTPause" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite">
+        <Comment>минимальная пауза</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTdeadStroke" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite">
+        <Comment>импульс для антилюфта</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTfilDif" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>Постоянная времени для диф</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iLenAper" type="T_INT" byteoffset="44" vartype="VAR" access="ReadWrite">
+        <Comment>Ширина апертуры для медианного фильтра в диф</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_eBlow" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBlow" basetype="T_INT">
+      <UserDefElement type="T_eBlow" iecname="DoNothingBlow" enumvalue="0" />
+      <UserDefElement type="T_eBlow" iecname="GateOpen" enumvalue="1" />
+      <UserDefElement type="T_eBlow" iecname="ValveOpen" enumvalue="2" />
+      <UserDefElement type="T_eBlow" iecname="Blow" enumvalue="3" />
+      <UserDefElement type="T_eBlow" iecname="Analys" enumvalue="4" />
+      <UserDefElement type="T_eBlow" iecname="FinalBlow" enumvalue="5" />
+      <UserDefElement type="T_eBlow" iecname="NoBlow" enumvalue="6" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eBoiler" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBoiler" basetype="T_INT">
+      <UserDefElement type="T_eBoiler" iecname="DoNothingBoiler" enumvalue="0" />
+      <UserDefElement type="T_eBoiler" iecname="BoilerCheck" enumvalue="1" />
+      <UserDefElement type="T_eBoiler" iecname="BoilerPrep" enumvalue="2" />
+      <UserDefElement type="T_eBoiler" iecname="BoilerFinal" enumvalue="3" />
+      <UserDefElement type="T_eBoiler" iecname="BoilerProtection" enumvalue="4" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eBoilerProtections" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBoilerProtections" basetype="T_INT">
+      <UserDefElement type="T_eBoilerProtections" iecname="NoBoilerProt" enumvalue="0" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PGasCollL" enumvalue="1" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PGasCollH" enumvalue="2" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PWaterOutL" enumvalue="3" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PWaterOutH" enumvalue="4" />
+      <UserDefElement type="T_eBoilerProtections" iecname="TWaterOutH" enumvalue="5" />
+      <UserDefElement type="T_eBoilerProtections" iecname="FWaterOutL" enumvalue="6" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PVacH" enumvalue="7" />
+      <UserDefElement type="T_eBoilerProtections" iecname="AirFanOff" enumvalue="8" />
+      <UserDefElement type="T_eBoilerProtections" iecname="SmokeFanOff" enumvalue="9" />
+      <UserDefElement type="T_eBoilerProtections" iecname="ManualStopKey" enumvalue="10" />
+      <UserDefElement type="T_eBoilerProtections" iecname="POilL" enumvalue="11" />
+      <UserDefElement type="T_eBoilerProtections" iecname="LastBurnProt" enumvalue="12" />
+      <UserDefElement type="T_eBoilerProtections" iecname="TWaterBoil" enumvalue="13" />
+      <UserDefElement type="T_eBoilerProtections" iecname="PAirLBoiler" enumvalue="14" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eBurnIgn" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBurnIgn" basetype="T_INT">
+      <UserDefElement type="T_eBurnIgn" iecname="DoNothingBurn" enumvalue="0" />
+      <UserDefElement type="T_eBurnIgn" iecname="CheckBurn" enumvalue="1" />
+      <UserDefElement type="T_eBurnIgn" iecname="PumpGas" enumvalue="2" />
+      <UserDefElement type="T_eBurnIgn" iecname="Spark" enumvalue="3" />
+      <UserDefElement type="T_eBurnIgn" iecname="Ignition" enumvalue="4" />
+      <UserDefElement type="T_eBurnIgn" iecname="StabFireIgn" enumvalue="5" />
+      <UserDefElement type="T_eBurnIgn" iecname="PrepDampers" enumvalue="6" />
+      <UserDefElement type="T_eBurnIgn" iecname="OpenValve2" enumvalue="7" />
+      <UserDefElement type="T_eBurnIgn" iecname="MinPower" enumvalue="8" />
+      <UserDefElement type="T_eBurnIgn" iecname="StabFireBurn" enumvalue="9" />
+      <UserDefElement type="T_eBurnIgn" iecname="FinalBurn" enumvalue="10" />
+      <UserDefElement type="T_eBurnIgn" iecname="Protection" enumvalue="11" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eBurnProtections" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eBurnProtections" basetype="T_INT">
+      <UserDefElement type="T_eBurnProtections" iecname="NoBurnProt" enumvalue="0" />
+      <UserDefElement type="T_eBurnProtections" iecname="FireIgnOff" enumvalue="1" />
+      <UserDefElement type="T_eBurnProtections" iecname="FireBurnOff" enumvalue="2" />
+      <UserDefElement type="T_eBurnProtections" iecname="PGasL" enumvalue="3" />
+      <UserDefElement type="T_eBurnProtections" iecname="PAirL" enumvalue="4" />
+      <UserDefElement type="T_eBurnProtections" iecname="ManualOff" enumvalue="5" />
+      <UserDefElement type="T_eBurnProtections" iecname="FanOff" enumvalue="6" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eDoubleSens" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eDoubleSens" basetype="T_INT">
+      <UserDefElement type="T_eDoubleSens" iecname="NoDoubleSens" enumvalue="0" />
+      <UserDefElement type="T_eDoubleSens" iecname="TwoSens" enumvalue="3" />
+      <UserDefElement type="T_eDoubleSens" iecname="FirstSens" enumvalue="1" />
+      <UserDefElement type="T_eDoubleSens" iecname="SecondSens" enumvalue="2" />
+    </TypeUserDef>
+    <TypeUserDef name="T_ePress" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="ePress" basetype="T_INT">
+      <UserDefElement type="T_ePress" iecname="DoNothingPress" enumvalue="0" />
+      <UserDefElement type="T_ePress" iecname="CloseSafety" enumvalue="1" />
+      <UserDefElement type="T_ePress" iecname="StabilP" enumvalue="2" />
+      <UserDefElement type="T_ePress" iecname="FixatP" enumvalue="3" />
+      <UserDefElement type="T_ePress" iecname="Test1" enumvalue="4" />
+      <UserDefElement type="T_ePress" iecname="Press" enumvalue="5" />
+      <UserDefElement type="T_ePress" iecname="Test2" enumvalue="6" />
+      <UserDefElement type="T_ePress" iecname="OpenSafety" enumvalue="7" />
+      <UserDefElement type="T_ePress" iecname="Test3" enumvalue="8" />
+      <UserDefElement type="T_ePress" iecname="FinalPress" enumvalue="9" />
+      <UserDefElement type="T_ePress" iecname="NoPress" enumvalue="10" />
+      <UserDefElement type="T_ePress" iecname="AlarmValve1" enumvalue="11" />
+      <UserDefElement type="T_ePress" iecname="AlarmNoDensity" enumvalue="12" />
+      <UserDefElement type="T_ePress" iecname="AlarmValveSafety" enumvalue="13" />
+      <UserDefElement type="T_ePress" iecname="AlarmNoPBetween" enumvalue="14" />
+    </TypeUserDef>
+    <TypeUserDef name="T_eVentilation" size="2" nativesize="2" swapsize="2" typeclass="Enum" iecname="eVentilation" basetype="T_INT">
+      <UserDefElement type="T_eVentilation" iecname="DoNothingVent" enumvalue="0" />
+      <UserDefElement type="T_eVentilation" iecname="StartFan" enumvalue="1" />
+      <UserDefElement type="T_eVentilation" iecname="OpenDampers" enumvalue="2" />
+      <UserDefElement type="T_eVentilation" iecname="Ventilation" enumvalue="3" />
+      <UserDefElement type="T_eVentilation" iecname="CloseDampers" enumvalue="4" />
+      <UserDefElement type="T_eVentilation" iecname="FinalVent" enumvalue="5" />
+      <UserDefElement type="T_eVentilation" iecname="VentAfterAlarm" enumvalue="6" />
+      <UserDefElement type="T_eVentilation" iecname="NoVent" enumvalue="7" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stAIChannelParams" size="24" nativesize="32" typeclass="Userdef" pouclass="STRUCTURE" iecname="stAIChannelParams">
+      <UserDefElement iecname="fElectricalL" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fElectricalH" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fNormL" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fNormH" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fTFilter" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fError" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stDamperReal" size="15" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="stDamperReal">
+      <UserDefElement iecname="fPosition" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Датчик положения заслонки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNH" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite">
+        <Comment>Не открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNL" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite">
+        <Comment>Не закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="9" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="10" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="11" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bChangeAutoKey" type="T_BOOL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>Сменить режим работы с кнопки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAutoLight" type="T_BOOL" byteoffset="13" vartype="VAR" access="ReadWrite">
+        <Comment>Подсветка кнопки режима</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bVent" type="T_BOOL" byteoffset="14" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stFanReal" size="9" nativesize="12" typeclass="Userdef" pouclass="STRUCTURE" iecname="stFanReal">
+      <UserDefElement iecname="fS" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTurnedOn" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Вентилятор включен</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTurnedOff" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Вентилятор выключен</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStart" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite">
+        <Comment>Вкл. вентилятор</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite">
+        <Comment>Вкл. вентилятор</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAutoKey" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stGasProps" size="36" nativesize="36" typeclass="Userdef" pouclass="STRUCTURE" iecname="stGasProps">
+      <UserDefElement iecname="fDt20" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Диаметр трубопровода</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fDd20" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Диаметр диафрагмы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iPov" type="T_INT" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>межпов. интерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iSelDiaf" type="T_INT" byteoffset="10" vartype="VAR" access="ReadWrite">
+        <Comment>0-угловой 1- фланцевый, 2- трехрадиусный</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fKsher" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>коэффицент шероховатости</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fRos" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>плотность природного газа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fXcoPes" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite">
+        <Comment>содержание СО в процентах</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fXnPes" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite">
+        <Comment>содержание азота в процентах</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iSel" type="T_INT" byteoffset="28" vartype="VAR" access="ReadWrite">
+        <Comment>1-пар нас, 2 пар перег, 0 - вода, 3 -пр.газ</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fCaloric" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite">
+        <Comment>Калорийность газа</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stGateReal" size="14" nativesize="14" typeclass="Userdef" pouclass="STRUCTURE" iecname="stGateReal">
+      <UserDefElement iecname="bMoving" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Ход задвижки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNH" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite">
+        <Comment>Не открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNL" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite">
+        <Comment>Не закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite">
+        <Comment>Открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpening" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Открытие</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClosing" type="T_BOOL" byteoffset="9" vartype="VAR" access="ReadWrite">
+        <Comment>Закрытие</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="10" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="11" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStopKey" type="T_BOOL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenPermission" type="T_BOOL" byteoffset="13" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stOtherProg" size="13" nativesize="13" typeclass="Userdef" pouclass="STRUCTURE" iecname="stOtherProg">
+      <UserDefElement iecname="bAVR" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Сработка АВР</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bUPS_SHUK" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite">
+        <Comment>Раб. от батареи ШУК</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bUPS_SHUG1" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite">
+        <Comment>Раб. от батареи ШУГ1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bUPS_SHUG2" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite">
+        <Comment>Раб. от батареи ШУГ2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStartVent" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Вкл. вентил.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStartPress" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Вкл. опресс.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStopGas" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп газ</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCheckAlarm" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite">
+        <Comment>Пров. сигнал.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bResetAlarmSound" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Пров. звук. сигнал.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bLightAlarm" type="T_BOOL" byteoffset="9" vartype="VAR" access="ReadWrite">
+        <Comment>Предв. звук. сигнал.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSoundAlarm" type="T_BOOL" byteoffset="10" vartype="VAR" access="ReadWrite">
+        <Comment>Авар. звук. сигн.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bResetSound" type="T_BOOL" byteoffset="11" vartype="VAR" access="ReadWrite">
+        <Comment>Снять звук. сигн.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stProt" size="118" nativesize="120" typeclass="Userdef" pouclass="STRUCTURE" iecname="stProt">
+      <UserDefElement iecname="bSoundOn" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Включена сигнализация</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCtrlOn" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite">
+        <Comment>Включено воздействие</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCheck" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite">
+        <Comment>Режим тестирования</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOff" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite">
+        <Comment>Отключить защиту</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTriggered" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Триггер по переднему фронту срабатывания защиты</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCtrl" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Защиты сработала и не сброшена</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fCountdown" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Отсчёт до срабатывания</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="wsMessage" type="T_WSTRING_50_" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>Текст аварии</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bInWork" type="T_BOOL" byteoffset="114" vartype="VAR" access="ReadWrite">
+        <Comment>Авария отслеживает параметр</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTurnOnCondition" type="T_BOOL" byteoffset="115" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bConditionTriggered" type="T_BOOL" byteoffset="116" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bAlwaysCtrl" type="T_BOOL" byteoffset="117" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stSparkReal" size="1" nativesize="1" typeclass="Userdef" pouclass="STRUCTURE" iecname="stSparkReal">
+      <UserDefElement iecname="bStart" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stTaskGasAir" size="8" nativesize="8" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTaskGasAir">
+      <UserDefElement iecname="fGasTask" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fAirTask" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stTimeProcIgn" size="56" nativesize="56" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcIgn">
+      <UserDefElement iecname="fCheckBurn" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPumpGas" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fSpark" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fIgnition" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fStabFireIgn" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPrepDampers" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fStabFireBurn" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fSlowStop" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMLowGas" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMHighGas" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMLowAir" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPWMHighAir" type="T_REAL" byteoffset="44" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fFireBurnFirstDelay" type="T_REAL" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fValve2" type="T_REAL" byteoffset="52" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stTimeProcPrep" size="16" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcPrep">
+      <UserDefElement iecname="fVentilation" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fVentAfterAlarm" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fBlow" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fBoilerCheck" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stTimeProcPress" size="28" nativesize="28" typeclass="Userdef" pouclass="STRUCTURE" iecname="stTimeProcPress">
+      <UserDefElement iecname="fStabilP" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fFixatP" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fTest1" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPress" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fTest2" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fOpenSafety" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fTest3" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stValveReal" size="7" nativesize="7" typeclass="Userdef" pouclass="STRUCTURE" iecname="stValveReal">
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыто</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite">
+        <Comment>Открыто</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCtrl" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite">
+        <Comment>Подача питания</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stVirtualKey" size="13" nativesize="13" typeclass="Userdef" pouclass="STRUCTURE" iecname="stVirtualKey">
+      <UserDefElement iecname="bStartVent" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopVent" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartBlow" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopBlow" type="T_BOOL" byteoffset="3" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartPress" type="T_BOOL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopPress" type="T_BOOL" byteoffset="5" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartBoiler" type="T_BOOL" byteoffset="6" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopBoiler" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSkipVent" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSkipBlow" type="T_BOOL" byteoffset="9" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bReset" type="T_BOOL" byteoffset="10" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bResetSound" type="T_BOOL" byteoffset="11" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bMute" type="T_BOOL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stWarning" size="112" nativesize="112" typeclass="Userdef" pouclass="STRUCTURE" iecname="stWarning">
+      <UserDefElement iecname="bCheck" type="T_BOOL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOff" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bTriggered" type="T_BOOL" byteoffset="2" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fCountdown" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="wsMessage" type="T_WSTRING_50_" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bInWork" type="T_BOOL" byteoffset="110" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bConditionTriggered" type="T_BOOL" byteoffset="111" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stWarningRetainData" size="16" nativesize="16" typeclass="Userdef" pouclass="STRUCTURE" iecname="stWarningRetainData">
+      <UserDefElement iecname="fValue" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fResponseTime" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bUseValue" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fHysteresisForAlarmOff" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stWaterProps" size="20" nativesize="20" typeclass="Userdef" pouclass="STRUCTURE" iecname="stWaterProps">
+      <UserDefElement iecname="iSel" type="T_INT" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>1-пар нас, 2 пар перег, 0 - вода, 3 -пр.газ</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fDt20" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Диаметр трубопровода</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fdd20" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Диаметр диафрагмы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iPov" type="T_INT" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>межпов. интерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iSelDiaf" type="T_INT" byteoffset="14" vartype="VAR" access="ReadWrite">
+        <Comment>0-угловой 1- фланцевый, 2- трехрадиусный</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fKsher" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>коэффицент шероховатости</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeArray name="T_ARRAY__1__4__OF_stTaskGasAir" size="32" nativesize="32" typeclass="Array" iecname="ARRAY [1..4] OF stTaskGasAir" basetype="T_stTaskGasAir">
+      <ArrayDim minrange="1" maxrange="4" />
+    </TypeArray>
+    <TypeSimple name="T_REFERENCE_TO_stAiChannelParams_REF" size="24" swapsize="0" typeclass="Reference" iecname="REFERENCE TO stAiChannelParams_REF" basetype="T_stAIChannelParams" />
+    <TypeUserDef name="T_stAllAiChannelParams" size="912" nativesize="2048" typeclass="Userdef" pouclass="STRUCTURE" iecname="stAllAiChannelParams">
+      <UserDefElement iecname="Air_Damper1_fPosition" type="T_stAIChannelParams" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. шиб. ДВ 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Air_Damper2_fPosition" type="T_stAIChannelParams" byteoffset="24" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. шиб. ДВ 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Air_fP" type="T_stAIChannelParams" byteoffset="48" vartype="VAR" access="ReadWrite">
+        <Comment>Pв общий</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_fPVac" type="T_stAIChannelParams" byteoffset="72" vartype="VAR" access="ReadWrite">
+        <Comment>Разрежение в топке</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_Damper_fPosition" type="T_stAIChannelParams" byteoffset="96" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. НАДС</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_fPAfterReg" type="T_stAIChannelParams" byteoffset="120" vartype="VAR" access="ReadWrite">
+        <Comment>Рг после рег.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_DamperReg_fPosition" type="T_stAIChannelParams" byteoffset="144" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ общ.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fPOut" type="T_stAIChannelParams" byteoffset="168" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fPIn" type="T_stAIChannelParams" byteoffset="192" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на входе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fPD" type="T_stAIChannelParams" byteoffset="216" vartype="VAR" access="ReadWrite">
+        <Comment>РDсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_fPD" type="T_stAIChannelParams" byteoffset="240" vartype="VAR" access="ReadWrite">
+        <Comment>PDг на входе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_fPBeforeReg" type="T_stAIChannelParams" byteoffset="264" vartype="VAR" access="ReadWrite">
+        <Comment>Рг перед рег.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_fO2" type="T_stAIChannelParams" byteoffset="288" vartype="VAR" access="ReadWrite">
+        <Comment>О² после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_fCO" type="T_stAIChannelParams" byteoffset="312" vartype="VAR" access="ReadWrite">
+        <Comment>СО после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_fCH4" type="T_stAIChannelParams" byteoffset="336" vartype="VAR" access="ReadWrite">
+        <Comment>СН4 перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Air_Fan1_fS" type="T_stAIChannelParams" byteoffset="360" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДВ1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Air_Fan2_fS" type="T_stAIChannelParams" byteoffset="384" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДВ2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_Fan_fS" type="T_stAIChannelParams" byteoffset="408" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДС</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gas_fT" type="T_stAIChannelParams" byteoffset="432" vartype="VAR" access="ReadWrite">
+        <Comment>Тг перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fTOut1" type="T_stAIChannelParams" byteoffset="456" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fTIn" type="T_stAIChannelParams" byteoffset="480" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Smoke_fT" type="T_stAIChannelParams" byteoffset="504" vartype="VAR" access="ReadWrite">
+        <Comment>Тдг после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Water_fTOut2" type="T_stAIChannelParams" byteoffset="528" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Air_fT" type="T_stAIChannelParams" byteoffset="552" vartype="VAR" access="ReadWrite">
+        <Comment>Тв после ДВ</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_fPgBetween" type="T_stAIChannelParams" byteoffset="576" vartype="VAR" access="ReadWrite">
+        <Comment>Рг между ПЗК гр.1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn1_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="600" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn2_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="624" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn3_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="648" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 3</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn1_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="672" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn2_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="696" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group1_Burn3_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="720" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 3</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_fPgBetween" type="T_stAIChannelParams" byteoffset="744" vartype="VAR" access="ReadWrite">
+        <Comment>Рг между ПЗК гр.2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn3_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="768" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 6</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn2_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="792" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 5</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn1_DamperGas_fPosition" type="T_stAIChannelParams" byteoffset="816" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РГ гор. 4</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn3_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="840" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 6</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn2_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="864" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 5</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Group2_Burn1_DamperAir_fPosition" type="T_stAIChannelParams" byteoffset="888" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. РВ гор. 4</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stBoilerProts" size="1558" nativesize="1560" typeclass="Userdef" pouclass="STRUCTURE" iecname="stBoilerProts">
+      <UserDefElement iecname="PGasCollL" type="T_stProt" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasCollH" type="T_stProt" byteoffset="120" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutL" type="T_stProt" byteoffset="240" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutH" type="T_stProt" byteoffset="360" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterOutH" type="T_stProt" byteoffset="480" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FWaterOutL" type="T_stProt" byteoffset="600" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PVacH" type="T_stProt" byteoffset="720" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ManualStopKey" type="T_stProt" byteoffset="840" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="LastBurnProt" type="T_stProt" byteoffset="960" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanSmokeOff" type="T_stProt" byteoffset="1080" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanAirOff" type="T_stProt" byteoffset="1200" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterBoil" type="T_stProt" byteoffset="1320" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PAirL" type="T_stProt" byteoffset="1440" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stBoilerWarnings" size="1232" nativesize="1232" typeclass="Userdef" pouclass="STRUCTURE" iecname="stBoilerWarnings">
+      <UserDefElement iecname="PGasCollL" type="T_stWarning" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasCollH" type="T_stWarning" byteoffset="112" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutL" type="T_stWarning" byteoffset="224" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutH" type="T_stWarning" byteoffset="336" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterOutH" type="T_stWarning" byteoffset="448" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FWaterOutL" type="T_stWarning" byteoffset="560" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PVacH" type="T_stWarning" byteoffset="672" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TSmokeH" type="T_stWarning" byteoffset="784" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH4" type="T_stWarning" byteoffset="896" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CO" type="T_stWarning" byteoffset="1008" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterBoil" type="T_stWarning" byteoffset="1120" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stBurnProts" size="598" nativesize="600" typeclass="Userdef" pouclass="STRUCTURE" iecname="stBurnProts">
+      <UserDefElement iecname="FireIgnOff" type="T_stProt" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FireBurnOff" type="T_stProt" byteoffset="120" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasL" type="T_stProt" byteoffset="240" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PAirL" type="T_stProt" byteoffset="360" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanOff" type="T_stProt" byteoffset="480" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stFlowParams" size="56" nativesize="56" typeclass="Userdef" pouclass="STRUCTURE" iecname="stFlowParams">
+      <UserDefElement iecname="Gas" type="T_stGasProps" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Water" type="T_stWaterProps" byteoffset="36" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stGateProg" size="84" nativesize="84" typeclass="Userdef" pouclass="STRUCTURE" iecname="stGateProg" basetype="T_stGateReal">
+      <UserDefElement iecname="bMoving" type="T_BOOL" byteoffset="0" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Ход задвижки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNH" type="T_BOOL" byteoffset="1" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Не открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNL" type="T_BOOL" byteoffset="2" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Не закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="3" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="4" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="5" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="6" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="7" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Стоп</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpening" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Открытие</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClosing" type="T_BOOL" byteoffset="9" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Закрытие</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="10" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="11" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStopKey" type="T_BOOL" byteoffset="12" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite">
+        <Comment>Стоп с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenPermission" type="T_BOOL" byteoffset="13" vartype="VAR" inherited_from="T_stGateReal" access="ReadWrite" />
+      <UserDefElement iecname="bM" type="T_BOOL" byteoffset="14" vartype="VAR" access="ReadWrite">
+        <Comment>Среднее положение</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenAuto" type="T_BOOL" byteoffset="15" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть в автомате</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenManual" type="T_BOOL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть в ручном</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseAuto" type="T_BOOL" byteoffset="17" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть в автомате</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseManual" type="T_BOOL" byteoffset="18" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть в ручном</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStopAuto" type="T_BOOL" byteoffset="19" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп в автмоате</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStopManual" type="T_BOOL" byteoffset="20" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп в ручном</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fErrorDelay" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite">
+        <Comment>Задержка формаирования сигнала ошибки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bErrorCantCtrl" type="T_BOOL" byteoffset="28" vartype="VAR" access="ReadWrite">
+        <Comment>Ошибка управления</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bErrorEndCaps" type="T_BOOL" byteoffset="29" vartype="VAR" access="ReadWrite">
+        <Comment>Ошибка концевых выключателей</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="30" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAuto" type="T_BOOL" byteoffset="31" vartype="VAR" access="ReadWrite">
+        <Comment>Режим автоматического управления</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOpen" type="T_BOOL" byteoffset="32" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockClose" type="T_BOOL" byteoffset="33" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOpenOut" type="T_BOOL" byteoffset="34" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockCloseOut" type="T_BOOL" byteoffset="35" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bProt" type="T_BOOL" byteoffset="36" vartype="VAR" access="ReadWrite">
+        <Comment>Перевод в безопасное состояние</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="State" type="T_WSTRING_22_" byteoffset="38" vartype="VAR" access="ReadWrite">
+        <Comment>Состояние</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stProtRetainData" size="12" nativesize="12" typeclass="Userdef" pouclass="STRUCTURE" iecname="stProtRetainData">
+      <UserDefElement iecname="fValue" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fResponseTime" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bUseValue" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="eDoubleSens" type="T_eDoubleSens" byteoffset="10" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stSparkProg" size="2" nativesize="2" typeclass="Userdef" pouclass="STRUCTURE" iecname="stSparkProg" basetype="T_stSparkReal">
+      <UserDefElement iecname="bStart" type="T_BOOL" byteoffset="0" vartype="VAR" inherited_from="T_stSparkReal" access="ReadWrite" />
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="1" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stValveProg" size="28" nativesize="28" typeclass="Userdef" pouclass="STRUCTURE" iecname="stValveProg" basetype="T_stValveReal">
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="0" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Закрыто</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="1" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Открыто</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCtrl" type="T_BOOL" byteoffset="2" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Подача питания</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="3" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="4" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="5" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="6" vartype="VAR" inherited_from="T_stValveReal" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bMEnable" type="T_BOOL" byteoffset="7" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOpenAuto" type="T_BOOL" byteoffset="8" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bCloseAuto" type="T_BOOL" byteoffset="9" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOpenManual" type="T_BOOL" byteoffset="10" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bCloseManual" type="T_BOOL" byteoffset="11" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fErrorDelay" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOnlyHCap" type="T_BOOL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>bNormalOpened	:	BOOL:=FALSE;</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOnlyLCap" type="T_BOOL" byteoffset="17" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bInvertCtrl" type="T_BOOL" byteoffset="18" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bErrorCantCtrl" type="T_BOOL" byteoffset="19" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bErrorEndCaps" type="T_BOOL" byteoffset="20" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="21" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bAuto" type="T_BOOL" byteoffset="22" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBlockOpen" type="T_BOOL" byteoffset="23" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBlockClose" type="T_BOOL" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBlockOpenOut" type="T_BOOL" byteoffset="25" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBlockCloseOut" type="T_BOOL" byteoffset="26" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bProt" type="T_BOOL" byteoffset="27" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stWarningList" size="176" nativesize="176" typeclass="Userdef" pouclass="STRUCTURE" iecname="stWarningList">
+      <UserDefElement iecname="PGasCollL" type="T_stWarningRetainData" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasCollH" type="T_stWarningRetainData" byteoffset="16" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutL" type="T_stWarningRetainData" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutH" type="T_stWarningRetainData" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterOutH" type="T_stWarningRetainData" byteoffset="64" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FWaterOutL" type="T_stWarningRetainData" byteoffset="80" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PVacH" type="T_stWarningRetainData" byteoffset="96" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TSmokeH" type="T_stWarningRetainData" byteoffset="112" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CH4" type="T_stWarningRetainData" byteoffset="128" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="CO" type="T_stWarningRetainData" byteoffset="144" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterBoil" type="T_stWarningRetainData" byteoffset="160" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeArray name="T_ARRAY__0__2__OF_ARRAY__iFirstRegimeMapPoint__iLastRegimeMapPoint__OF_stTaskGasAir" size="96" nativesize="96" typeclass="Array" iecname="ARRAY [0..2] OF ARRAY [iFirstRegimeMapPoint..iLastRegimeMapPoint] OF stTaskGasAir" basetype="T_ARRAY__1__4__OF_stTaskGasAir">
+      <ArrayDim minrange="0" maxrange="2" />
+    </TypeArray>
+    <TypeUserDef name="T_stAIChannelProg" size="40" nativesize="28" typeclass="Userdef" pouclass="STRUCTURE" iecname="stAIChannelProg">
+      <UserDefElement iecname="fInValue" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="stAiChannelParams" type="T_stAIChannelParams" byteoffset="4" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fSimulValue" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="32" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fNormValue" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stBurnProtectionList" size="60" nativesize="60" typeclass="Userdef" pouclass="STRUCTURE" iecname="stBurnProtectionList">
+      <UserDefElement iecname="FireIgnOff" type="T_stProtRetainData" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FireBurnOff" type="T_stProtRetainData" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PAirL" type="T_stProtRetainData" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasL" type="T_stProtRetainData" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanOff" type="T_stProtRetainData" byteoffset="48" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stDamperProg" size="132" nativesize="120" typeclass="Userdef" pouclass="STRUCTURE" iecname="stDamperProg" basetype="T_stDamperReal">
+      <UserDefElement iecname="fPosition" type="T_REAL" byteoffset="0" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Датчик положения заслонки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bH" type="T_BOOL" byteoffset="4" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bL" type="T_BOOL" byteoffset="5" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNH" type="T_BOOL" byteoffset="6" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Не открыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bNL" type="T_BOOL" byteoffset="7" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Не закрыт</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bClose" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Закрыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpen" type="T_BOOL" byteoffset="9" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Открыть</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseKey" type="T_BOOL" byteoffset="10" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Закрыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenKey" type="T_BOOL" byteoffset="11" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Открыть с ключа</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bChangeAutoKey" type="T_BOOL" byteoffset="12" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Сменить режим работы с кнопки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAutoLight" type="T_BOOL" byteoffset="13" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite">
+        <Comment>Подсветка кнопки режима</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bVent" type="T_BOOL" byteoffset="14" vartype="VAR" inherited_from="T_stDamperReal" access="ReadWrite" />
+      <UserDefElement iecname="_Position" type="T_stAIChannelProg" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>	Параметры датчика положения</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bM" type="T_BOOL" byteoffset="56" vartype="VAR" access="ReadWrite">
+        <Comment>Среднее положение</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenAuto" type="T_BOOL" byteoffset="57" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть в автомате</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bOpenManual" type="T_BOOL" byteoffset="58" vartype="VAR" access="ReadWrite">
+        <Comment>Открыть в ручном</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseAuto" type="T_BOOL" byteoffset="59" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть в автомате</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bCloseManual" type="T_BOOL" byteoffset="60" vartype="VAR" access="ReadWrite">
+        <Comment>Закрыть в ручном</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fErrorDelay" type="T_REAL" byteoffset="64" vartype="VAR" access="ReadWrite">
+        <Comment>Задержка формаирования сигнала ошибки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bErrorCantCtrl" type="T_BOOL" byteoffset="68" vartype="VAR" access="ReadWrite">
+        <Comment>Ошибка управления</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bErrorEndCaps" type="T_BOOL" byteoffset="69" vartype="VAR" access="ReadWrite">
+        <Comment>Ошибка концевых выключателей</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="70" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAuto" type="T_BOOL" byteoffset="71" vartype="VAR" access="ReadWrite">
+        <Comment>Режим автоматического управления</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOpen" type="T_BOOL" byteoffset="72" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockClose" type="T_BOOL" byteoffset="73" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOpenOut" type="T_BOOL" byteoffset="74" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockCloseOut" type="T_BOOL" byteoffset="75" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bProt" type="T_BOOL" byteoffset="76" vartype="VAR" access="ReadWrite">
+        <Comment>Перевод в безопасное состояние</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bRegulatePermission" type="T_BOOL" byteoffset="77" vartype="VAR" access="ReadWrite">
+        <Comment>Разрешение на регулирование</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAutoCorrect" type="T_BOOL" byteoffset="78" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fMechTime" type="T_REAL" byteoffset="80" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bReversePosition" type="T_BOOL" byteoffset="84" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="State" type="T_WSTRING_22_" byteoffset="86" vartype="VAR" access="ReadWrite">
+        <Comment>Состояние</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stFanProg" size="76" nativesize="64" typeclass="Userdef" pouclass="STRUCTURE" iecname="stFanProg" basetype="T_stFanReal">
+      <UserDefElement iecname="fS" type="T_REAL" byteoffset="0" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite">
+        <Comment>Вибрация</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTurnedOn" type="T_BOOL" byteoffset="4" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite">
+        <Comment>Вентилятор включен</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTurnedOff" type="T_BOOL" byteoffset="5" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite">
+        <Comment>Вентилятор выключен</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStart" type="T_BOOL" byteoffset="6" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite">
+        <Comment>Вкл. вентилятор</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="7" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite">
+        <Comment>Вкл. вентилятор</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bAutoKey" type="T_BOOL" byteoffset="8" vartype="VAR" inherited_from="T_stFanReal" access="ReadWrite" />
+      <UserDefElement iecname="_S" type="T_stAIChannelProg" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="52" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOnAuto" type="T_BOOL" byteoffset="53" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOnManual" type="T_BOOL" byteoffset="54" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOffAuto" type="T_BOOL" byteoffset="55" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOffManual" type="T_BOOL" byteoffset="56" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBlockOn" type="T_BOOL" byteoffset="57" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOff" type="T_BOOL" byteoffset="58" vartype="VAR" access="ReadWrite">
+        <Comment>Доп условия блокировки закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOnOut" type="T_BOOL" byteoffset="59" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка открытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bBlockOffOut" type="T_BOOL" byteoffset="60" vartype="VAR" access="ReadWrite">
+        <Comment>Есть блокировка закрытия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bProt" type="T_BOOL" byteoffset="61" vartype="VAR" access="ReadWrite">
+        <Comment>Перевод в безопасное состояние</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bErrorCantCtrl" type="T_BOOL" byteoffset="62" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bAuto" type="T_BOOL" byteoffset="63" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fErrorDelay" type="T_REAL" byteoffset="64" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOnlyOnState" type="T_BOOL" byteoffset="68" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bOnlyOffState" type="T_BOOL" byteoffset="69" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Color" type="T_DINT" byteoffset="72" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stProtectionList" size="216" nativesize="216" typeclass="Userdef" pouclass="STRUCTURE" iecname="stProtectionList">
+      <UserDefElement iecname="PGasCollL" type="T_stProtRetainData" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PGasCollH" type="T_stProtRetainData" byteoffset="12" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutL" type="T_stProtRetainData" byteoffset="24" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PWaterOutH" type="T_stProtRetainData" byteoffset="36" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterOutH" type="T_stProtRetainData" byteoffset="48" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FWaterOutL" type="T_stProtRetainData" byteoffset="60" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PVacH" type="T_stProtRetainData" byteoffset="72" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ManualStopKey" type="T_stProtRetainData" byteoffset="84" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="LastBurnProt" type="T_stProtRetainData" byteoffset="96" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="BurnProtectionList" type="T_stBurnProtectionList" byteoffset="108" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanSmokeOff" type="T_stProtRetainData" byteoffset="168" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="FanAirOff" type="T_stProtRetainData" byteoffset="180" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="TWaterBoil" type="T_stProtRetainData" byteoffset="192" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="PAirL" type="T_stProtRetainData" byteoffset="204" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stReservProg" size="1315" nativesize="1004" typeclass="Userdef" pouclass="STRUCTURE" iecname="stReservProg">
+      <UserDefElement iecname="fAI4" type="T_REAL" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI16" type="T_REAL" byteoffset="4" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI17" type="T_REAL" byteoffset="8" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI18" type="T_REAL" byteoffset="12" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI20" type="T_REAL" byteoffset="16" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI21" type="T_REAL" byteoffset="20" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI31" type="T_REAL" byteoffset="24" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI32" type="T_REAL" byteoffset="28" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI40" type="T_REAL" byteoffset="32" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI41" type="T_REAL" byteoffset="36" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI42" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI43" type="T_REAL" byteoffset="44" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI44" type="T_REAL" byteoffset="48" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI45" type="T_REAL" byteoffset="52" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI46" type="T_REAL" byteoffset="56" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI47" type="T_REAL" byteoffset="60" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI48" type="T_REAL" byteoffset="64" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI56" type="T_REAL" byteoffset="68" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI57" type="T_REAL" byteoffset="72" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI58" type="T_REAL" byteoffset="76" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI59" type="T_REAL" byteoffset="80" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI60" type="T_REAL" byteoffset="84" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI61" type="T_REAL" byteoffset="88" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI62" type="T_REAL" byteoffset="92" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI63" type="T_REAL" byteoffset="96" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fAI64" type="T_REAL" byteoffset="100" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI4" type="T_stAIChannelProg" byteoffset="104" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI16" type="T_stAIChannelProg" byteoffset="144" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI17" type="T_stAIChannelProg" byteoffset="184" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI18" type="T_stAIChannelProg" byteoffset="224" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI20" type="T_stAIChannelProg" byteoffset="264" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI21" type="T_stAIChannelProg" byteoffset="304" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI31" type="T_stAIChannelProg" byteoffset="344" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI32" type="T_stAIChannelProg" byteoffset="384" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI40" type="T_stAIChannelProg" byteoffset="424" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI41" type="T_stAIChannelProg" byteoffset="464" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI42" type="T_stAIChannelProg" byteoffset="504" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI43" type="T_stAIChannelProg" byteoffset="544" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI44" type="T_stAIChannelProg" byteoffset="584" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI45" type="T_stAIChannelProg" byteoffset="624" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI46" type="T_stAIChannelProg" byteoffset="664" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI47" type="T_stAIChannelProg" byteoffset="704" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI48" type="T_stAIChannelProg" byteoffset="744" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI56" type="T_stAIChannelProg" byteoffset="784" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI57" type="T_stAIChannelProg" byteoffset="824" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI58" type="T_stAIChannelProg" byteoffset="864" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI59" type="T_stAIChannelProg" byteoffset="904" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI60" type="T_stAIChannelProg" byteoffset="944" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI61" type="T_stAIChannelProg" byteoffset="984" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI62" type="T_stAIChannelProg" byteoffset="1024" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI63" type="T_stAIChannelProg" byteoffset="1064" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_AI64" type="T_stAIChannelProg" byteoffset="1104" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI01" type="T_BOOL" byteoffset="1144" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI02" type="T_BOOL" byteoffset="1145" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI03" type="T_BOOL" byteoffset="1146" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI05" type="T_BOOL" byteoffset="1147" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI08" type="T_BOOL" byteoffset="1148" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI09" type="T_BOOL" byteoffset="1149" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI10" type="T_BOOL" byteoffset="1150" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI11" type="T_BOOL" byteoffset="1151" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI12" type="T_BOOL" byteoffset="1152" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI15" type="T_BOOL" byteoffset="1153" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI22" type="T_BOOL" byteoffset="1154" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI29" type="T_BOOL" byteoffset="1155" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI30" type="T_BOOL" byteoffset="1156" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI37" type="T_BOOL" byteoffset="1157" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI38" type="T_BOOL" byteoffset="1158" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI39" type="T_BOOL" byteoffset="1159" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI40" type="T_BOOL" byteoffset="1160" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI41" type="T_BOOL" byteoffset="1161" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI42" type="T_BOOL" byteoffset="1162" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI43" type="T_BOOL" byteoffset="1163" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI44" type="T_BOOL" byteoffset="1164" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI60" type="T_BOOL" byteoffset="1165" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI66" type="T_BOOL" byteoffset="1166" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI67" type="T_BOOL" byteoffset="1167" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI68" type="T_BOOL" byteoffset="1168" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI69" type="T_BOOL" byteoffset="1169" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI70" type="T_BOOL" byteoffset="1170" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI71" type="T_BOOL" byteoffset="1171" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI72" type="T_BOOL" byteoffset="1172" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI73" type="T_BOOL" byteoffset="1173" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI74" type="T_BOOL" byteoffset="1174" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI75" type="T_BOOL" byteoffset="1175" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI76" type="T_BOOL" byteoffset="1176" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI85" type="T_BOOL" byteoffset="1177" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI86" type="T_BOOL" byteoffset="1178" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI87" type="T_BOOL" byteoffset="1179" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI88" type="T_BOOL" byteoffset="1180" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI89" type="T_BOOL" byteoffset="1181" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI90" type="T_BOOL" byteoffset="1182" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI91" type="T_BOOL" byteoffset="1183" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI92" type="T_BOOL" byteoffset="1184" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI97" type="T_BOOL" byteoffset="1185" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI99" type="T_BOOL" byteoffset="1186" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI101" type="T_BOOL" byteoffset="1187" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI105" type="T_BOOL" byteoffset="1188" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI106" type="T_BOOL" byteoffset="1189" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI107" type="T_BOOL" byteoffset="1190" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI108" type="T_BOOL" byteoffset="1191" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI128" type="T_BOOL" byteoffset="1192" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI129" type="T_BOOL" byteoffset="1193" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI130" type="T_BOOL" byteoffset="1194" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI131" type="T_BOOL" byteoffset="1195" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI132" type="T_BOOL" byteoffset="1196" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI133" type="T_BOOL" byteoffset="1197" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI134" type="T_BOOL" byteoffset="1198" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI135" type="T_BOOL" byteoffset="1199" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI136" type="T_BOOL" byteoffset="1200" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI137" type="T_BOOL" byteoffset="1201" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI138" type="T_BOOL" byteoffset="1202" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI139" type="T_BOOL" byteoffset="1203" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI140" type="T_BOOL" byteoffset="1204" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI149" type="T_BOOL" byteoffset="1205" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI150" type="T_BOOL" byteoffset="1206" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI151" type="T_BOOL" byteoffset="1207" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI152" type="T_BOOL" byteoffset="1208" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI153" type="T_BOOL" byteoffset="1209" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI154" type="T_BOOL" byteoffset="1210" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI155" type="T_BOOL" byteoffset="1211" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI156" type="T_BOOL" byteoffset="1212" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI161" type="T_BOOL" byteoffset="1213" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI163" type="T_BOOL" byteoffset="1214" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI165" type="T_BOOL" byteoffset="1215" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI169" type="T_BOOL" byteoffset="1216" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI170" type="T_BOOL" byteoffset="1217" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI171" type="T_BOOL" byteoffset="1218" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI172" type="T_BOOL" byteoffset="1219" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI188" type="T_BOOL" byteoffset="1220" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI192" type="T_BOOL" byteoffset="1221" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI193" type="T_BOOL" byteoffset="1222" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI194" type="T_BOOL" byteoffset="1223" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI195" type="T_BOOL" byteoffset="1224" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI196" type="T_BOOL" byteoffset="1225" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI197" type="T_BOOL" byteoffset="1226" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI198" type="T_BOOL" byteoffset="1227" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI199" type="T_BOOL" byteoffset="1228" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI200" type="T_BOOL" byteoffset="1229" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI201" type="T_BOOL" byteoffset="1230" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI202" type="T_BOOL" byteoffset="1231" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI203" type="T_BOOL" byteoffset="1232" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDI204" type="T_BOOL" byteoffset="1233" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO09" type="T_BOOL" byteoffset="1234" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO15" type="T_BOOL" byteoffset="1235" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO16" type="T_BOOL" byteoffset="1236" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO17" type="T_BOOL" byteoffset="1237" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO18" type="T_BOOL" byteoffset="1238" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO20" type="T_BOOL" byteoffset="1239" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO21" type="T_BOOL" byteoffset="1240" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO22" type="T_BOOL" byteoffset="1241" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO26" type="T_BOOL" byteoffset="1242" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO41" type="T_BOOL" byteoffset="1243" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO42" type="T_BOOL" byteoffset="1244" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO45" type="T_BOOL" byteoffset="1245" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO46" type="T_BOOL" byteoffset="1246" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO47" type="T_BOOL" byteoffset="1247" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO48" type="T_BOOL" byteoffset="1248" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO49" type="T_BOOL" byteoffset="1249" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO50" type="T_BOOL" byteoffset="1250" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO51" type="T_BOOL" byteoffset="1251" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO52" type="T_BOOL" byteoffset="1252" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO53" type="T_BOOL" byteoffset="1253" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO54" type="T_BOOL" byteoffset="1254" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO55" type="T_BOOL" byteoffset="1255" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO56" type="T_BOOL" byteoffset="1256" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO57" type="T_BOOL" byteoffset="1257" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO58" type="T_BOOL" byteoffset="1258" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO59" type="T_BOOL" byteoffset="1259" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO60" type="T_BOOL" byteoffset="1260" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO61" type="T_BOOL" byteoffset="1261" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO62" type="T_BOOL" byteoffset="1262" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO63" type="T_BOOL" byteoffset="1263" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO64" type="T_BOOL" byteoffset="1264" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO65" type="T_BOOL" byteoffset="1265" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO66" type="T_BOOL" byteoffset="1266" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO79" type="T_BOOL" byteoffset="1267" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO80" type="T_BOOL" byteoffset="1268" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO81" type="T_BOOL" byteoffset="1269" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO82" type="T_BOOL" byteoffset="1270" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO86" type="T_BOOL" byteoffset="1271" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO89" type="T_BOOL" byteoffset="1272" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO91" type="T_BOOL" byteoffset="1273" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO93" type="T_BOOL" byteoffset="1274" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO99" type="T_BOOL" byteoffset="1275" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO100" type="T_BOOL" byteoffset="1276" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO101" type="T_BOOL" byteoffset="1277" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO102" type="T_BOOL" byteoffset="1278" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO103" type="T_BOOL" byteoffset="1279" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO104" type="T_BOOL" byteoffset="1280" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO105" type="T_BOOL" byteoffset="1281" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO106" type="T_BOOL" byteoffset="1282" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO107" type="T_BOOL" byteoffset="1283" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO108" type="T_BOOL" byteoffset="1284" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO109" type="T_BOOL" byteoffset="1285" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO110" type="T_BOOL" byteoffset="1286" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO111" type="T_BOOL" byteoffset="1287" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO112" type="T_BOOL" byteoffset="1288" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO113" type="T_BOOL" byteoffset="1289" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO114" type="T_BOOL" byteoffset="1290" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO127" type="T_BOOL" byteoffset="1291" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO128" type="T_BOOL" byteoffset="1292" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO129" type="T_BOOL" byteoffset="1293" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO130" type="T_BOOL" byteoffset="1294" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO134" type="T_BOOL" byteoffset="1295" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO137" type="T_BOOL" byteoffset="1296" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO139" type="T_BOOL" byteoffset="1297" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO141" type="T_BOOL" byteoffset="1298" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO147" type="T_BOOL" byteoffset="1299" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO148" type="T_BOOL" byteoffset="1300" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO149" type="T_BOOL" byteoffset="1301" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO150" type="T_BOOL" byteoffset="1302" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO151" type="T_BOOL" byteoffset="1303" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO152" type="T_BOOL" byteoffset="1304" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO153" type="T_BOOL" byteoffset="1305" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO154" type="T_BOOL" byteoffset="1306" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO155" type="T_BOOL" byteoffset="1307" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO156" type="T_BOOL" byteoffset="1308" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO157" type="T_BOOL" byteoffset="1309" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO158" type="T_BOOL" byteoffset="1310" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO159" type="T_BOOL" byteoffset="1311" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO160" type="T_BOOL" byteoffset="1312" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO161" type="T_BOOL" byteoffset="1313" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bDO162" type="T_BOOL" byteoffset="1314" vartype="VAR" access="ReadWrite">
+        <Comment>Резерв</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stWaterProg" size="544" nativesize="448" typeclass="Userdef" pouclass="STRUCTURE" iecname="stWaterProg">
+      <UserDefElement iecname="_PIn" type="T_stAIChannelProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на входе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_POut" type="T_stAIChannelProg" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_PD" type="T_stAIChannelProg" byteoffset="80" vartype="VAR" access="ReadWrite">
+        <Comment>РDсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_TOut1" type="T_stAIChannelProg" byteoffset="120" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_TIn" type="T_stAIChannelProg" byteoffset="160" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_TOut2" type="T_stAIChannelProg" byteoffset="200" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_F" type="T_stAIChannelProg" byteoffset="240" vartype="VAR" access="ReadWrite">
+        <Comment>Расход</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_TBoil" type="T_stAIChannelProg" byteoffset="280" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPIn" type="T_REAL" byteoffset="320" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на входе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fPOut" type="T_REAL" byteoffset="324" vartype="VAR" access="ReadWrite">
+        <Comment>Рсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fPD" type="T_REAL" byteoffset="328" vartype="VAR" access="ReadWrite">
+        <Comment>РDсв на выходе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTOut1" type="T_REAL" byteoffset="332" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTIn" type="T_REAL" byteoffset="336" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTOut2" type="T_REAL" byteoffset="340" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fF" type="T_REAL" byteoffset="344" vartype="VAR" access="ReadWrite">
+        <Comment>Расход</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fEfficiency" type="T_REAL" byteoffset="348" vartype="VAR" access="ReadWrite">
+        <Comment>КПД</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fEnergy" type="T_REAL" byteoffset="352" vartype="VAR" access="ReadWrite">
+        <Comment>Энергия</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTOut" type="T_REAL" byteoffset="356" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв после котла 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fTBoil" type="T_REAL" byteoffset="360" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bP_HH" type="T_BOOL" byteoffset="364" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв выше нормы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bP_LL" type="T_BOOL" byteoffset="365" vartype="VAR" access="ReadWrite">
+        <Comment>Тсв ниже нормы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bTBoilError" type="T_BOOL" byteoffset="366" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="GateIn" type="T_stGateProg" byteoffset="368" vartype="VAR" access="ReadWrite">
+        <Comment>Вод. ЗД вх</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="GateOut" type="T_stGateProg" byteoffset="452" vartype="VAR" access="ReadWrite">
+        <Comment>Вод. ЗД вых</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="536" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Color" type="T_DINT" byteoffset="540" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stAirProg" size="496" nativesize="436" typeclass="Userdef" pouclass="STRUCTURE" iecname="stAirProg">
+      <UserDefElement iecname="_T" type="T_stAIChannelProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Тв после ДВ</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_P" type="T_stAIChannelProg" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>Рв общий</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Damper1" type="T_stDamperProg" byteoffset="80" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. шиб. ДВ 1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Damper2" type="T_stDamperProg" byteoffset="212" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. шиб. ДВ 2</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Fan1" type="T_stFanProg" byteoffset="344" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДВ1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Fan2" type="T_stFanProg" byteoffset="420" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДВ2</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stBurnProg" size="1147" nativesize="1128" typeclass="Userdef" pouclass="STRUCTURE" iecname="stBurnProg">
+      <UserDefElement iecname="DamperGas" type="T_stDamperProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Засл. газ.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="DamperAir" type="T_stDamperProg" byteoffset="132" vartype="VAR" access="ReadWrite">
+        <Comment>Засл. воз.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Valve2" type="T_stValveProg" byteoffset="264" vartype="VAR" access="ReadWrite">
+        <Comment>ПЗК-2 гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveIgn" type="T_stValveProg" byteoffset="292" vartype="VAR" access="ReadWrite">
+        <Comment>КЗ гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Spark" type="T_stSparkProg" byteoffset="320" vartype="VAR" access="ReadWrite">
+        <Comment>ИВН включить гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bFireBurnErr" type="T_BOOL" byteoffset="322" vartype="VAR" access="ReadWrite">
+        <Comment>Фак. гор. отказ гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bFireBurn" type="T_BOOL" byteoffset="323" vartype="VAR" access="ReadWrite">
+        <Comment>Фак. гор. есть гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bPgNorm" type="T_BOOL" byteoffset="324" vartype="VAR" access="ReadWrite">
+        <Comment>Рг в норме гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bPaNorm" type="T_BOOL" byteoffset="325" vartype="VAR" access="ReadWrite">
+        <Comment>Рв в норме гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bFireIgn" type="T_BOOL" byteoffset="326" vartype="VAR" access="ReadWrite">
+        <Comment>Фак. зап. есть гор.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iBurnNumber" type="T_INT" byteoffset="328" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnMain" type="T_BOOL" byteoffset="330" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnStarted" type="T_BOOL" byteoffset="331" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bIgnProc" type="T_BOOL" byteoffset="332" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnFinal" type="T_BOOL" byteoffset="333" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnAlarm" type="T_BOOL" byteoffset="334" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fIgnRemainingTimeStep" type="T_REAL" byteoffset="336" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fIgnStepTime" type="T_REAL" byteoffset="340" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="sIgnCurrentStep" type="T_WSTRING_30_" byteoffset="344" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="sIgnCurrentAlarm" type="T_WSTRING_30_" byteoffset="406" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="sIgnCurrentProblem" type="T_WSTRING_30_" byteoffset="468" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="stBurnProts" type="T_stBurnProts" byteoffset="532" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bImitFireBurnOff" type="T_BOOL" byteoffset="1130" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bImitFireIgnOff" type="T_BOOL" byteoffset="1131" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bImitFanOff" type="T_BOOL" byteoffset="1132" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bBurnProtTriggered" type="T_BOOL" byteoffset="1133" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="iFailIgnCount" type="T_INT" byteoffset="1134" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPowerMin" type="T_BOOL" byteoffset="1136" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="eBurnIgn" type="T_eBurnIgn" byteoffset="1138" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="eBurnProtections" type="T_eBurnProtections" byteoffset="1140" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSparkManual" type="T_BOOL" byteoffset="1142" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartBurnVirt" type="T_BOOL" byteoffset="1143" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopBurnVirt" type="T_BOOL" byteoffset="1144" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStart" type="T_BOOL" byteoffset="1145" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="1146" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeUserDef name="T_stGasProg" size="580" nativesize="528" typeclass="Userdef" pouclass="STRUCTURE" iecname="stGasProg">
+      <UserDefElement iecname="_PAfterReg" type="T_stAIChannelProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Рг после рег.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_PD" type="T_stAIChannelProg" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>PDг на входе</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_PBeforeReg" type="T_stAIChannelProg" byteoffset="80" vartype="VAR" access="ReadWrite">
+        <Comment>Рг перед рег.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_CH4" type="T_stAIChannelProg" byteoffset="120" vartype="VAR" access="ReadWrite">
+        <Comment>СН4 перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_T" type="T_stAIChannelProg" byteoffset="160" vartype="VAR" access="ReadWrite">
+        <Comment>Тг перед котлом</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_F" type="T_stAIChannelProg" byteoffset="200" vartype="VAR" access="ReadWrite">
+        <Comment>Расход</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bP_LL" type="T_BOOL" byteoffset="240" vartype="VAR" access="ReadWrite">
+        <Comment>Рг ниже нормы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bP_HH" type="T_BOOL" byteoffset="241" vartype="VAR" access="ReadWrite">
+        <Comment>Рг выше нормы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="DamperReg" type="T_stDamperProg" byteoffset="244" vartype="VAR" access="ReadWrite">
+        <Comment>РГ общ. откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Gate" type="T_stGateProg" byteoffset="376" vartype="VAR" access="ReadWrite">
+        <Comment>ЗДг2 не откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveMain" type="T_stValveProg" byteoffset="460" vartype="VAR" access="ReadWrite">
+        <Comment>ГОК откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveBlowBetween" type="T_stValveProg" byteoffset="488" vartype="VAR" access="ReadWrite">
+        <Comment>КП между ЗДг откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveBlowBeforeMain" type="T_stValveProg" byteoffset="516" vartype="VAR" access="ReadWrite">
+        <Comment>КП перед ГОК откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveBlowEnd" type="T_stValveProg" byteoffset="544" vartype="VAR" access="ReadWrite">
+        <Comment>КП из тупика откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fF" type="T_REAL" byteoffset="572" vartype="VAR" access="ReadWrite">
+        <Comment>Расход</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fEfficiency" type="T_REAL" byteoffset="576" vartype="VAR" access="ReadWrite">
+        <Comment>КПД</Comment>
+      </UserDefElement>
+    </TypeUserDef>
+    <TypeUserDef name="T_stSmokeProg" size="392" nativesize="320" typeclass="Userdef" pouclass="STRUCTURE" iecname="stSmokeProg">
+      <UserDefElement iecname="_PVac" type="T_stAIChannelProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Разрежение в топке</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_O2" type="T_stAIChannelProg" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>О² после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_CO" type="T_stAIChannelProg" byteoffset="80" vartype="VAR" access="ReadWrite">
+        <Comment>СО после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="_T" type="T_stAIChannelProg" byteoffset="120" vartype="VAR" access="ReadWrite">
+        <Comment>Тдг после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fPVac" type="T_REAL" byteoffset="160" vartype="VAR" access="ReadWrite">
+        <Comment>Разрежение в топке</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fO2" type="T_REAL" byteoffset="164" vartype="VAR" access="ReadWrite">
+        <Comment>О² после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fCO" type="T_REAL" byteoffset="168" vartype="VAR" access="ReadWrite">
+        <Comment>СО после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fT" type="T_REAL" byteoffset="172" vartype="VAR" access="ReadWrite">
+        <Comment>Тдг после котла</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Damper" type="T_stDamperProg" byteoffset="176" vartype="VAR" access="ReadWrite">
+        <Comment>Пол. НАДС</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Fan" type="T_stFanProg" byteoffset="308" vartype="VAR" access="ReadWrite">
+        <Comment>Вибрация ДС</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bPVac_HH" type="T_BOOL" byteoffset="384" vartype="VAR" access="ReadWrite">
+        <Comment>Разр. ниже нормы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="385" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Color" type="T_DINT" byteoffset="388" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeArray name="T_ARRAY__1__3__OF_stBurnProg" size="3444" nativesize="3384" typeclass="Array" iecname="ARRAY [1..3] OF stBurnProg" basetype="T_stBurnProg">
+      <ArrayDim minrange="1" maxrange="3" />
+    </TypeArray>
+    <TypeUserDef name="T_stGroupProg" size="3671" nativesize="3604" typeclass="Userdef" pouclass="STRUCTURE" iecname="stGroupProg">
+      <UserDefElement iecname="_PgBetween" type="T_stAIChannelProg" byteoffset="0" vartype="VAR" access="ReadWrite">
+        <Comment>Рг между ПЗК гр.1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="fPgBetween" type="T_REAL" byteoffset="40" vartype="VAR" access="ReadWrite">
+        <Comment>Рг между ПЗК гр.1</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Burn" type="T_ARRAY__1__3__OF_stBurnProg" byteoffset="44" vartype="VAR" access="ReadWrite">
+        <Comment>Горелки</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValveSafety" type="T_stValveProg" byteoffset="3488" vartype="VAR" access="ReadWrite">
+        <Comment>КБ закр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="ValvePress" type="T_stValveProg" byteoffset="3516" vartype="VAR" access="ReadWrite">
+        <Comment>КО откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="Valve1" type="T_stValveProg" byteoffset="3544" vartype="VAR" access="ReadWrite">
+        <Comment>ПЗК-1 откр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStartIgn" type="T_BOOL" byteoffset="3572" vartype="VAR" access="ReadWrite">
+        <Comment>Розжиг гр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStop" type="T_BOOL" byteoffset="3573" vartype="VAR" access="ReadWrite">
+        <Comment>Стоп гр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bStartPress" type="T_BOOL" byteoffset="3574" vartype="VAR" access="ReadWrite">
+        <Comment>Опрессовка гр.</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bSimulation" type="T_BOOL" byteoffset="3575" vartype="VAR" access="ReadWrite">
+        <Comment>Режим симуляции</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="iGroupNumber" type="T_INT" byteoffset="3576" vartype="VAR" access="ReadWrite">
+        <Comment>Номер группы</Comment>
+      </UserDefElement>
+      <UserDefElement iecname="bPressProc" type="T_BOOL" byteoffset="3578" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPressOk" type="T_BOOL" byteoffset="3579" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bPressAlarm" type="T_BOOL" byteoffset="3580" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bSkipPress" type="T_BOOL" byteoffset="3581" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPressRemainingTime" type="T_REAL" byteoffset="3584" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPressFullTime" type="T_REAL" byteoffset="3588" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPressRemainingTimeStep" type="T_REAL" byteoffset="3592" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPressStepTime" type="T_REAL" byteoffset="3596" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="sPressCurrentStep" type="T_WSTRING_30_" byteoffset="3600" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="ePressIgn" type="T_ePress" byteoffset="3662" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="fPressPFixat" type="T_REAL" byteoffset="3664" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartPressVirt" type="T_BOOL" byteoffset="3668" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStopPressVirt" type="T_BOOL" byteoffset="3669" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="bStartIgnVirt" type="T_BOOL" byteoffset="3670" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+    <TypeArray name="T_ARRAY__1__2__OF_stGroupProg" size="7344" nativesize="7208" typeclass="Array" iecname="ARRAY [1..2] OF stGroupProg" basetype="T_stGroupProg">
+      <ArrayDim minrange="1" maxrange="2" />
+    </TypeArray>
+    <TypeUserDef name="T_stDataProg" size="10687" nativesize="9960" typeclass="Userdef" pouclass="STRUCTURE" iecname="stDataProg">
+      <UserDefElement iecname="Gas" type="T_stGasProg" byteoffset="0" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Group" type="T_ARRAY__1__2__OF_stGroupProg" byteoffset="580" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Water" type="T_stWaterProg" byteoffset="7924" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Smoke" type="T_stSmokeProg" byteoffset="8468" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Air" type="T_stAirProg" byteoffset="8860" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Other" type="T_stOtherProg" byteoffset="9356" vartype="VAR" access="ReadWrite" />
+      <UserDefElement iecname="Reserv" type="T_stReservProg" byteoffset="9372" vartype="VAR" access="ReadWrite" />
+    </TypeUserDef>
+  </TypeList>
+  <NodeList>
+    <Node name="Application" nodeflags="NodeTypeBranchNode BranchNodeApplicationName">
+      <Node name="GVL" nodeflags="NodeTypeBranchNode SigTypeGvl">
+        <Node name="bAnalysOk" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Подтверждение анализа</Comment>
+        </Node>
+        <Node name="bBlowOk" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг конца продувки</Comment>
+        </Node>
+        <Node name="bBlowProc" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг процесса продувки</Comment>
+        </Node>
+        <Node name="bBoilerAlarm" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг сигнализации котла</Comment>
+        </Node>
+        <Node name="bBoilerOk" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг конца подготовительных операций (продувка, вентиляция)</Comment>
+        </Node>
+        <Node name="bBoilerProt" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг аварии котла</Comment>
+        </Node>
+        <Node name="bBoilerStarted" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Котёл запущен</Comment>
+        </Node>
+        <Node name="bOneBurnFinal" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг есть горелка в работе</Comment>
+        </Node>
+        <Node name="bVentOk" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг конца вентиляции</Comment>
+        </Node>
+        <Node name="bVentProc" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Comment>Флаг процесса вентиляции</Comment>
+        </Node>
+        <Node name="DataProg" nodeflags="SigTypeGvl ExportedVariable" type="T_stDataProg" access="ReadWrite">
+          <Comment>Структуры программных данных</Comment>
+        </Node>
+        <Node name="eBlow" nodeflags="SigTypeGvl ExportedVariable" type="T_eBlow" access="ReadWrite">
+          <Comment>Текущий шаг продувки</Comment>
+        </Node>
+        <Node name="eBoiler" nodeflags="SigTypeGvl ExportedVariable" type="T_eBoiler" access="ReadWrite">
+          <Comment>Текущий шаг подготовки котла</Comment>
+        </Node>
+        <Node name="eBoilerProtections" nodeflags="SigTypeGvl ExportedVariable" type="T_eBoilerProtections" access="ReadWrite">
+          <Comment>Текущая авария котла</Comment>
+        </Node>
+        <Node name="eVent" nodeflags="SigTypeGvl ExportedVariable" type="T_eVentilation" access="ReadWrite">
+          <Comment>Текущий шаг вентиляции</Comment>
+        </Node>
+        <Node name="fPAirTask" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment>Задание на регуляторы горелок из режимки</Comment>
+        </Node>
+        <Node name="fPGasTask" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Comment>Задание на регуляторы горелок из режимки</Comment>
+        </Node>
+        <Node name="iBlowRemainingTime" nodeflags="SigTypeGvl ExportedVariable" type="T_INT" access="ReadWrite">
+          <Comment>Обратный отсчёт продувки</Comment>
+        </Node>
+        <Node name="iVentRemainingTime" nodeflags="SigTypeGvl ExportedVariable" type="T_INT" access="ReadWrite">
+          <Comment>Обратный отсчёт вентиляции</Comment>
+        </Node>
+        <Node name="stBoilerProts" nodeflags="SigTypeGvl ExportedVariable" type="T_stBoilerProts" access="ReadWrite">
+          <Comment>Структура аварий</Comment>
+        </Node>
+        <Node name="stBoilerWarnings" nodeflags="SigTypeGvl ExportedVariable" type="T_stBoilerWarnings" access="ReadWrite">
+          <Comment>Структура сигнализаций</Comment>
+        </Node>
+        <Node name="stVirtualKey" nodeflags="SigTypeGvl ExportedVariable" type="T_stVirtualKey" access="ReadWrite">
+          <Comment>Структура виртуальных кнопок</Comment>
+        </Node>
+        <Node name="wsCurrentBoilerProblem" nodeflags="SigTypeGvl ExportedVariable" type="T_WSTRING" access="ReadWrite">
+          <Comment>Текущая проблема подготовки котла</Comment>
+        </Node>
+      </Node>
+      <Node name="PersistentVars" nodeflags="NodeTypeBranchNode SigTypeGvl">
+        <Attribute>authentification:=d433c4d1-208a-4b7a-b4ba-e3c77e67e46b</Attribute>
+        <Attribute>checksum_override:=3471669843</Attribute>
+        <Attribute>checksumnoinit_override:=489710779</Attribute>
+        <Attribute>dummy:=7</Attribute>
+        <Attribute>init_related_code:=bc7ab303-0d61-4d0a-93f6-1122a1f48e34</Attribute>
+        <Attribute>vfinitonly:=</Attribute>
+        <Node name="arRegimeMap" nodeflags="SigTypeGvl ExportedVariable" type="T_ARRAY__0__2__OF_ARRAY__iFirstRegimeMapPoint__iLastRegimeMapPoint__OF_stTaskGasAir" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=21</Attribute>
+          <Attribute>Checksum_Type:=2296634012</Attribute>
+        </Node>
+        <Node name="bUseArrayTaskGas" nodeflags="SigTypeGvl ExportedVariable" type="T_BOOL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=22</Attribute>
+          <Attribute>Checksum_Type:=227968344</Attribute>
+        </Node>
+        <Node name="fBurnPGasMin" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=7</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="fFanStartDelay" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=25</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="fGasDamperRegTask" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=9</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="fPressPDiffMax" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=5</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="fPressPMin" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=6</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="fSmokePVacTask" nodeflags="SigTypeGvl ExportedVariable" type="T_REAL" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=8</Attribute>
+          <Attribute>Checksum_Type:=58735164</Attribute>
+        </Node>
+        <Node name="iMaxFailIgnCount" nodeflags="SigTypeGvl ExportedVariable" type="T_INT" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=4</Attribute>
+          <Attribute>Checksum_Type:=178117354</Attribute>
+        </Node>
+        <Node name="stAirPSharedPIDParams" nodeflags="SigTypeGvl ExportedVariable" type="T_St_Params_Pid_Imp" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=15</Attribute>
+          <Attribute>Checksum_Type:=3755208429</Attribute>
+        </Node>
+        <Node name="stAllAiChannelParams" nodeflags="SigTypeGvl ExportedVariable" type="T_stAllAiChannelParams" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=1</Attribute>
+          <Attribute>Checksum_Type:=3356407929</Attribute>
+        </Node>
+        <Node name="stFlowParams" nodeflags="SigTypeGvl ExportedVariable" type="T_stFlowParams" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=20</Attribute>
+          <Attribute>Checksum_Type:=1013945418</Attribute>
+        </Node>
+        <Node name="stGasDamperRegPIDParams" nodeflags="SigTypeGvl ExportedVariable" type="T_St_Params_Pid_Imp" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=13</Attribute>
+          <Attribute>Checksum_Type:=3755208429</Attribute>
+        </Node>
+        <Node name="stProtectionList" nodeflags="SigTypeGvl ExportedVariable" type="T_stProtectionList" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=2</Attribute>
+          <Attribute>Checksum_Type:=1523730463</Attribute>
+        </Node>
+        <Node name="stSmokePVacPIDParams" nodeflags="SigTypeGvl ExportedVariable" type="T_St_Params_Pid_Imp" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=14</Attribute>
+          <Attribute>Checksum_Type:=3755208429</Attribute>
+        </Node>
+        <Node name="stTimeProcIgn" nodeflags="SigTypeGvl ExportedVariable" type="T_stTimeProcIgn" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=12</Attribute>
+          <Attribute>Checksum_Type:=2115373537</Attribute>
+        </Node>
+        <Node name="stTimeProcPrep" nodeflags="SigTypeGvl ExportedVariable" type="T_stTimeProcPrep" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=10</Attribute>
+          <Attribute>Checksum_Type:=3245491719</Attribute>
+        </Node>
+        <Node name="stTimeProcPress" nodeflags="SigTypeGvl ExportedVariable" type="T_stTimeProcPress" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=11</Attribute>
+          <Attribute>Checksum_Type:=3326399502</Attribute>
+        </Node>
+        <Node name="stWarningList" nodeflags="SigTypeGvl ExportedVariable" type="T_stWarningList" access="ReadWrite">
+          <Attribute>order_in_persistent_editor:=3</Attribute>
+          <Attribute>Checksum_Type:=1443215985</Attribute>
+        </Node>
+      </Node>
+    </Node>
+  </NodeList>
+</Symbolconfiguration>
